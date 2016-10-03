@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bnb="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.cx.bottom_navigation_bar.MainActivity">
+    <FrameLayout
+        android:id="@+id/search_edit_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="#f2f2f2"
+        android:layout_height="56dp"
+        >
+        <com.cx.bottom_navigation_bar.BottomNavigationItem
+            android:id="@+id/bni1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            bnb:src="@drawable/book"
+            bnb:text="book"
+            bnb:color="@color/teal"
+            android:layout_height="match_parent" />
+        <com.cx.bottom_navigation_bar.BottomNavigationItem
+            android:id="@+id/bni2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            bnb:src="@drawable/favorite"
+            bnb:text="favorite"
+            bnb:color="@color/orange"
+            android:layout_height="match_parent" />
+        <com.cx.bottom_navigation_bar.BottomNavigationItem
+            android:id="@+id/bni3"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            bnb:src="@drawable/find"
+            bnb:text="find"
+            bnb:color="@color/brown"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</RelativeLayout>
