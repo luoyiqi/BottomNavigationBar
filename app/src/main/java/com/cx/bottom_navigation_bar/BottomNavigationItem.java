@@ -132,7 +132,7 @@ public class BottomNavigationItem extends View {
       if (currentR<getMeasuredWidth()/2+10){
           canvas.drawCircle(getMeasuredWidth()/2,getMeasuredHeight()/2,currentR,bgPaint);
           currentR+=10;
-          postInvalidateDelayed(30);
+          postInvalidateDelayed(15);
       }else{
           canvas.drawCircle(getMeasuredWidth()/2,getMeasuredHeight()/2,0,bgPaint);
           currentR=0;
