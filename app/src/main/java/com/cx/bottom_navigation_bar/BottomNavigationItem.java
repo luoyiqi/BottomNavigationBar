@@ -35,7 +35,7 @@ public class BottomNavigationItem extends View {
     private Paint clickPaint;
     private Paint clickTextPaint;
     private Bitmap clickBitmap;
-    private int currentR=getMeasuredWidth()/2;
+    private int currentR=0;
     private Rect imgClickRect;
     private Paint bgPaint;
 
@@ -133,8 +133,8 @@ public class BottomNavigationItem extends View {
           currentR+=10;
           postInvalidateDelayed(30);
       }else{
+          canvas.drawCircle(getMeasuredWidth()/2,getMeasuredHeight()/2,0,bgPaint);
           currentR=0;
-          canvas.drawCircle(getMeasuredWidth()/2,getMeasuredHeight()/2,currentR,bgPaint);
       }
     canvas.restore();
   }
