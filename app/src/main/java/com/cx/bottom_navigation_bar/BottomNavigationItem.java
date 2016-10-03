@@ -93,7 +93,8 @@ public class BottomNavigationItem extends View {
         clickTextPaint = new Paint();
         clickPaint = new Paint();
         bgPaint=new Paint();
-        bgPaint.setColor(0xFFDFDCDC);
+        bgPaint.setColor(clickColor);
+        bgPaint.setAlpha(50);
         color=0xFF807E7E;
     }
 
