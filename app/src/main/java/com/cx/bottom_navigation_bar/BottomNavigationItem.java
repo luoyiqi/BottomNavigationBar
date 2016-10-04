@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -36,9 +37,8 @@ public class BottomNavigationItem extends View {
     private Paint clickTextPaint;
     private Bitmap clickBitmap;
     private int currentR=0;
-    private Rect imgClickRect;
     private Paint bgPaint;
-
+    private Matrix matrix;
     private int imgWidth = DisplayUtil.dp2px(getContext(), 24);
     private int textSize = DisplayUtil.sp2px(getContext(), 12);
     private int clickTextSize = DisplayUtil.sp2px(getContext(), 14);
@@ -88,7 +88,6 @@ public class BottomNavigationItem extends View {
         textPaint.setColor(0xff6666);
         textPaint.getTextBounds(text, 0, text.length(), textRect);
         imgRect = new Rect();
-        imgClickRect = new Rect();
         paint = new Paint();
         clickTextPaint = new Paint();
         clickPaint = new Paint();
@@ -96,6 +95,7 @@ public class BottomNavigationItem extends View {
         bgPaint.setColor(clickColor);
         bgPaint.setAlpha(50);
         color=0xFF807E7E;
+        matrix=new Matrix();
     }
 
 
@@ -104,17 +104,16 @@ public class BottomNavigationItem extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int left = getMeasuredWidth() / 2 - imgWidth / 2;
         int top = DisplayUtil.dp2px(getContext(), 8);
-        int clickTop = DisplayUtil.dp2px(getContext(), 6);
         imgRect.set(left, top, left + imgWidth, top + imgWidth);
-        imgClickRect.set(left, clickTop, left + imgWidth, clickTop + imgWidth);
+        matrix.setTranslate(0,DisplayUtil.dp2px(getContext(),-2));
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         if (click) {
-           if (clickBitmap==null)clickBitmap=creatClickBitmap(clickColor,imgClickRect,clickPaint);
+           if (clickBitmap==null)clickBitmap=creatClickBitmap(clickColor,imgRect,clickPaint);
             drawRipple(canvas);
-            canvas.drawBitmap(clickBitmap, 0, 0, null);
+            canvas.drawBitmap(clickBitmap, matrix,null);
             drawTargetText(canvas, 255);
         } else {
             if (bitmap==null) bitmap=creatClickBitmap(color,imgRect,paint);
